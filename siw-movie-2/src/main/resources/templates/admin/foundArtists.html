@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FoundArtists</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<h1>Artisti di questa nazionalità</h1>
+		<div th:if="${artists.isEmpty()}">Non ci sono artisti con questa nazionalità</div><br>
+		<ul th:if="${!artists.isEmpty()}">
+			<li th:each="artist:${artists}">
+				<a href="artist.html" th:href="@{'/artists' + '/' + ${artist.id}}" th:text="${artist.name} + ${artist.surname} + ' (' + ${artist.nationality} + ')'">Nome e nazionalità</a>
+			</li>
+		</ul>
+		<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>

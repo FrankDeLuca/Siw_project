@@ -1,0 +1,302 @@
+*{
+	font-family: 'poppins', sans-serif;
+	color: white;
+	font-weight: bold;
+	}
+
+.submit{
+	color: black;
+	font-weight: bold;
+}
+
+input {
+	color: black;
+	font-weight: lighter;
+}
+
+textarea {
+	color: black;
+	font-weight: lighter;
+}
+
+h1 {
+	font-size: 250%;
+	font-style: normal;
+	color: white;
+}
+
+h2 {
+	color: white;
+}
+
+h4 {
+	color: white;
+}
+
+h3 {
+	color: white;
+}
+
+h3.title {
+	color: white;
+	font-style: oblique;
+	margin-top: 10px;
+}
+
+h3.artist-name {
+	color: white;
+	font-style: oblique;
+	margin-top: 10px;
+}
+
+h3.acted{
+	color: orange;
+}
+
+h3.directed{
+	color: orange;
+}
+
+h1.ops {
+	text-align: center;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+body {
+	background: url('backg-image.jpg')repeat;
+	backdrop-filter: blur(5px);
+  background-position: center;
+  background-size: cover;
+ height: 100vh;
+}
+
+a{
+	text-decoration: none;
+	font-size: 100%;
+	color: white;
+	font-weight: bold;
+	font-style: oblique;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+center {
+	text-align: center;
+}
+
+#flex{
+	display:flex;
+	justify-content: center;
+	margin-left: 100px;
+	margin-right: 100px;
+	
+}
+
+header a {
+	text-decoration: none;
+	font-size: 100%;
+	color: white;
+	font-weight: bold;
+	font-style: oblique;
+}
+
+header a:hover{
+	text-decoration: underline;
+	color: white;
+}
+
+header {
+	position: fixed;
+	top: -8px;
+	left: -15px;
+	right: -8px;
+}
+#headerflex{
+	display:flex;
+	justify-content: center;
+	background-color: orange;
+	
+	width: auto;
+	height: 40px;
+}
+
+.items{
+	border-radius: 5px;
+	background-color: lightgreen;
+	margin: 5px;
+	width: 200px;
+	height: 40px;
+	text-align: center;
+}
+
+.titleR {
+	font-size: 18px;
+	font-weight: bold;
+	color: orange;
+}
+
+.autore {
+	 margin-top: 5px;
+    font-size: 16px;
+    color: orange;
+}
+
+#headerflex div{
+	margin: 8px;
+	text-align: center;
+}
+
+.film-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 15px;
+}
+
+.film-item {
+	border: 4px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.film-image {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+        
+ .artist-card {
+    border: 4px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.artist-foto{
+	width: 150px;
+	max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 4px solid #ffffff;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
+
+.container2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+.card {
+  width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.card span {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.stars {
+      display: flex;
+      align-items: center;
+    }
+
+.stars i {
+  color: gold;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.movie-details {
+    margin-top: 50px;
+    font-family: 'poppins', sans-serif;
+    font-style: oblique;
+}
+.movie-title {
+    margin-bottom: 20px;
+}
+.movie-year {
+    font-size: 18px;
+    color: orange;
+}
+.director {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: orange;
+}
+.actors {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: orange;
+}
+.review {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid orange;
+}
+.review-text {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+}
+
+.artist-details {
+    margin-top: 50px;
+}
+.artist-name {
+    margin-bottom: 20px;
+}
+.artist-birth {
+    font-size: 18px;
+    color: orange;
+}
+.artist-death {
+    font-size: 18px;
+    color: orange;
+}
+
+.show-film {
+	color: orange;
+}
+
+.ddot {
+	color: orange;
+	text-decoration: none;
+}
+
+.show-actors {
+	font-size: 16px;
+	color: orange;
+	text-decoration: underline;
+}
+
+.director {
+	color: orange;
+	text-decoration: underline;
+}

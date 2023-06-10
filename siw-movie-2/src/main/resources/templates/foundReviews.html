@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FoundNewses</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<h1>Notizie in questa data</h1>
+		<div th:if="${reviews.isEmpty()}">Non ci sono notizie con i parametri che stai cercando</div>
+		<ul th:if="${!reviews.isEmpty()}">
+			<li th:each="review:${reviews}">
+				<a href="review.html" th:href="@{'/reviews' + '/' + ${review.id}}" th:text="${review.title}">Titolo recensione</a>
+			</li>
+		</ul>
+	</body>
+</html>

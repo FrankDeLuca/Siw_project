@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Artist</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<header id="headerflex">
+			<div>
+				<a href="/">Pagina iniziale</a>
+			</div>
+		</header>
+		<br>
+		<div class="artist-details" th:if="${artist}">
+			<h1 class="artist-name" th:text="${artist.name} + ' ' + ${artist.surname}">Nome artista</h1>
+			<h2 class="artist-birth">Anagrafica:
+				<span th:text="${#temporals.format(artist.birth)}">Nascita</span><span class="artist-death" th:if="${artist.death}"><span th:text="' - ' + ${#temporals.format(artist.death)}">Morte</span></spanth>
+			</h2>
+			<h3 class="acted">Film in cui ha recitato:
+				<ul th:if="${artist.actedMovies}">
+					<li th:each="movie:${artist.actedMovies}">
+						<a th:href="@{'/movies' + '/' + ${movie.id}}"><span th:text="${movie.title}">Titolo film</span></a>
+					</li>
+				</ul>
+			</h3>
+			<h3 class="acted">Film che ha diretto:
+				<ul th:if="${artist.directedMovies}">
+					<li th:each="movie:${artist.directedMovies}">
+						<a th:href="@{'/movies' + '/' + ${movie.id}}"><span th:text="${movie.title}">Titolo film</span></a>
+					</li>
+				</ul>
+			</h3>
+			<center>
+				<img th:src="@{${artist.photosImagePath}}" width="400" height="600" />
+			</center>
+		</div>
+		<div th:unless="${artist}">L'artista non esiste!</div>
+		<a href="/artists">Torna alla pagina precedente</a>
+	</body>
+</html>

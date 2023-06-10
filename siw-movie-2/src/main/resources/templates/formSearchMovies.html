@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SearchMovies</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<header id="headerflex">
+			<div>
+				<a href="/success">Pagina iniziale</a>
+			</div>
+		</header>
+		<h1>Effettua la ricera di un film per anno</h1>
+		<form th:action="@{/searchMovies}" method="post">
+			<div>
+				<label for="anno">Anno:</label> <span><input type="text" th:value="${year}" name="year"/></span>
+			</div>
+			<div>
+				<span><button type="submit">Cerca</button></span>
+			</div>
+		</form>
+	</body>
+</html>

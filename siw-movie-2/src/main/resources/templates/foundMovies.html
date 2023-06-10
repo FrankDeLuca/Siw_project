@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FoundMovies</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<h1>Film usciti nell'anno che hai cercato</h1>
+		<div th:if="${movies.isEmpty()}">Non ci sono film usciti in questo anno</div>
+		<ul th:if="${!movies.isEmpty()}">
+			<li th:each="movie:${movies}">
+				<a href="movie.html" th:href="@{'/movies' + '/' + ${movie.id}}" th:text="${movie.title} + ' (' + ${movie.year} + ')'">Titolo e anno film</a>
+			</li>
+		</ul>
+		<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>

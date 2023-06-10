@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Movie</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<header id="headerflex">
+			<div>
+				<a href="/">Pagina iniziale</a>
+			</div>
+		</header>
+		<br>
+		<div class="movie-details" th:if="${movie}">
+			<h1 class="movie-title" th:text="${movie.title}">Titolo film</h1>
+			<h2 class="movie-year">Anno:
+				<span th:text="${movie.year}">Anno film</span>
+			</h2>
+			<h3 class="director">Regista:
+				<span th:if="${movie.director}" th:text="${movie.director.name}+' '+${movie.director.surname}">Nome e Cognome</span>
+			</h3>
+			<h4 class="actors" th:if="${movie.actors}">Attori:
+				<ul>
+					<li th:each="artist:${movie.actors}">
+						<span th:text="${artist.name} + ' ' + ${artist.surname}">Nome e cognome</span>
+					</li>
+				</ul>
+			</h4>
+			<center class="locandina">
+				<img th:src="@{${movie.photosImagePath}}" width="300" height="400"/>
+			</center>
+			<div class="review" th:if="${movie.reviews}">
+				<ul>
+					<li th:each="review:${movie.reviews}">
+						<div class="titleR" th:text="${review.title}">Titolo recensione</div>
+						<span class="autore">Autore</span><span>: </span><span th:text="${review.author.name}">Nome dell'autore</span>
+						<div class="review-text" th:text="${review.text}">Testo della recensione</div>
+						<div class="stars">
+						<span>Voto complessivo al film: </span><span th:each="i : ${#numbers.sequence(1, review.valutazione)}">
+						    <i class="fa fa-star checked"></i>
+						</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div th:unless="${movie}">Il film non esiste!</div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexPageForSIWMovie</title> 
+    <link rel="stylesheet" href="index.css">
+   </head>
+<body>
+  <nav>
+    <div class="menu">
+      <div class="logo">
+        <span>SIW Movie</span>
+      </div>
+      <div th:if="${user}">
+				<span th:text="${user.username}">Username</span>
+				<a href="/logout">Logout</a>
+			</div>
+			<div th:unless="${user}">
+				<a href="/login">Login</a>
+		</div>
+    </div>
+  </nav>
+  <div class="img"></div>
+  <div class="center">
+    <div class="title">SIW Movie 2</div>
+    <div class="sub_title">database for movies</div>
+    <div>
+      <button class="btns"><a href="/moviesView">Elenco film</a></button>
+            <button class="btns"><a href="/reviews">Recensioni</a></button>
+      <button class="btns"><a href="/artists">Elenco artisti</a></button>
+    </div>
+  </div>
+</body>
+</html>

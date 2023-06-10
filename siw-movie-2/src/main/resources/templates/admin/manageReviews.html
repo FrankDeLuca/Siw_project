@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Reviews</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Recensioni inserite dagli utenti</h1>
+		<div th:if="${reviews.isEmpty()}">È un po' vuoto qui! Non ci sono recensioni nel sistema.</div>
+		<ul>
+			<li th:each="review:${reviews}">
+				<a th:href="@{'/reviews' + '/' + ${review.id}}" th:text="${review.title}">Review info</a>
+				<span> &rarr; </span>
+				<a th:href="@{'/admin/manageReviews' + '/' + ${review.id}}">Rimuovi recensione</a>
+			</li>
+		</ul>
+		<br>
+		<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>

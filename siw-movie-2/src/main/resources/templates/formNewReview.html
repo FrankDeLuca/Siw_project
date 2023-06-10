@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NewReview</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<h1>Aggiungi una recensione al database</h1>
+		<a href="/moviesView">Guarda qui i titoli dei film per cui puoi aggiungere una recensione</a>
+		<div class="container">
+		<form th:action="@{/reviews}" method="post" th:object="${review}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err:${#felids.globalErrors()}">Errore</p>
+		</div>
+		<div th:text="${messaggioErrore}">Messaggio Errore</div>
+		<div>
+			<label for="film">Titolo film:</label> <span><input type="text" th:value="${film}" name="film" /></span>
+		</div>
+		<div>
+			<label for="titolo">Titolo recensione:</label> <span><input type="text" th:field="${review.title}" /></span>
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Eventuale errore</span>
+		</div>
+		<div class="testo">
+			<label for="testo">Testo recensione:</label><br><textarea for="testo" rows="5" cols="33" th:field="${review.text}">Scrivi...</textarea>
+			<span th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Eventuale errore</span>
+		</div>
+		<div>
+			<label for="voto">Voto al film:</label> <span><input type="text"th:field="${review.valutazione}" /></span>
+			<span th:if="${#fields.hasErrors('valutazione')}" th:errors="*{valutazione}">Eventuale errore</span>
+		</div>
+		<br>
+		<div>
+			<span><button class="submit" type="submit">Conferma inserimento</button></span>
+		</div>
+		</form>
+		</div>
+		<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Artists</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<header id="headerflex">
+			<div>
+				<a href="/moviesView">Tutti i film</a>
+			</div>
+			<div>
+				<a href="/reviews">Tutte le recensioni</a>
+			</div>
+			<div>
+				<a href="/">Pagina iniziale</a>
+			</div>
+		</header>
+		<br>
+		<h1>Artisti nel tuo database</h1>
+		<div th:if="${artists.isEmpty()}">Non ci sono artisti nel sistema</div>
+		 <div class="grid-container">
+        <div th:each="artist : ${artists}" class="artist-card">
+            <a th:href="@{'/artists' + '/' + ${artist.id}}"><img th:src="${artist.photosImagePath}" alt="Immagine artista" class="artist-foto"></a>
+            <h3 class="artist-name" th:text="${artist.name} + ' ' + ${artist.surname}">Nome e cognome</h3>
+        </div>
+    </div>
+	</body>
+</html>

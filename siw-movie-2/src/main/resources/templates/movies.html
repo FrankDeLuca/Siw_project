@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Movies list</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<h1>Film nel tuo database</h1>
+		<div th:if="${movies.isEmpty()}">Non ci sono film nel sistema</div>
+		<ol type="I">
+			<li th:each="movie:${movies}">
+				<span th:text="${movie.title} + ' (' + ${movie.year} + ')'">Titolo e anno</span>
+			</li>
+		</ol><br>
+	</body>
+</html>

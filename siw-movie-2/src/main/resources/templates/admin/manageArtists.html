@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Artists</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Artisti nel tuo database</h1>
+		<div th:if="${artists.isEmpty()}">Non ci sono artisti nel sistema</div>
+		<ul>
+			<li th:each="artist:${artists}">
+				<a th:href="@{'/artists' + '/' + ${artist.id}}" th:text="${artist.name} + ' ' + ${artist.surname}">Artist info</a>
+				<span> &rarr; </span>
+				<a th:href="@{'/admin/manageArtists' + '/' + ${artist.id}}">Rimuovi</a>
+			</li>
+		</ul>
+			<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>

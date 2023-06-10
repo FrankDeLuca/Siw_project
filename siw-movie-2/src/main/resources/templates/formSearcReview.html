@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SearchNewses</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<h1>Effettua la ricera di una noizia per data</h1>
+		<form th:action="@{/searchNewses}" method="post">
+			<div>
+				<label for="titolo">Titolo:</label> <span><input type="text" th:value="${title}" name="title"/></span>
+			</div>
+			<div>
+				<span><button type="submit">Cerca</button></span>
+			</div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ViewMovies</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<header id="headerflex">
+			<div>
+				<a href="/reviews">Tutte le recensioni</a>
+			</div>
+			<div>
+				<a href="/artists">Tutti gli artisti</a>
+			</div>
+			<div>
+				<a href="/">Pagina iniziale</a>
+			</div>
+		</header>
+		<br>
+		<h1>Film nel tuo database</h1>
+		<div th:if="${movies.isEmpty()}">Non ci sono film nel sistema</div>
+		<div class="film-grid">
+			<div th:each="movie:${movies}" class="film-item">
+				<a th:href="@{'/movies' + '/' + ${movie.id}}"><img th:src="@{${movie.photosImagePath}}" class="film-image"/></a>
+				<h3 class="title" th:text="${movie.title}">Titolo film</h3>
+			</div>
+		</div>
+		<br>
+	</body>
+</html>

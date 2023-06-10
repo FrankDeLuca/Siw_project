@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add actor to a film</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<h1>Attori per il film <span th:text="'['+${movie.title}+']'">Titolo</span></h1>
+		<div>Attori che recitano nel film</div>
+		<ul>
+			<li th:each="artist:${artistsIn}">
+				<span th:text="${artist.name} + ' ' + ${artist.surname}">Nome e cognome</span><span> &rArr; </span>
+				<span> <a th:href="@{'/admin/deleteActorsFromMovie'+'/'+${movie.id}+'/'+${artist.id}}"> rimuovi</a></span>
+			</li>
+		</ul><br>
+		<div>Attori da aggiungere al film</div>
+		<ul>
+			<li th:each="artist:${artistsOut}">
+				<span th:text="${artist.name} + ' ' + ${artist.surname}">Nome e cognome</span><span> &rArr; </span>
+				<span> <a th:href="@{'/admin/setActorsToMovie'+'/'+${movie.id}+'/'+${artist.id}}"> aggiungi</a></span>
+			</li>
+		</ul><br>
+		<div>
+					<form th:action="@{'/admin/formUpdateMovie'+'/'+${movie.id}}">
+						<button class="submit" type="submit">fine</button>
+					</form>
+		</div><br>
+		<a href="/admin/formNewArtist">Aggiungi un artista al database</a><br>
+		<a href="/">Torna alla pagina iniziale</a><br>
+	</body>
+</html>

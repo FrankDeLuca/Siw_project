@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SearchArtists</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<header id="headerflex">
+			<div>
+				<a href="/formNewArtist">Inserisci un artista</a>
+			</div>
+			<div>
+				<a href="/artists">Visualizza tutti gli artisti</a>
+			</div>
+			<div>
+				<a href="/">Pagina iniziale</a>
+			</div>
+		</header>
+		<h1>Effettua la ricera di un artista per nazionalità</h1>
+		<form th:action="@{/searchArtists}" method="post">
+			<div>
+				<label for="nationality">Nazionalità:</label> <span><input type="text" th:value="${nationality}" name="nationality"/></span>
+			</div>
+			<div>
+				<span><button type="submit">Cerca</button></span>
+			</div>
+			<a href="/indexArtist">Torna alla pagina iniziale</a>
+		</form>
+	</body>
+</html>

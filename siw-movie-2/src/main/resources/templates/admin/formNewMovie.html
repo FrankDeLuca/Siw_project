@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NewMovie</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+
+		<h1>Aggiungi un film al database</h1>
+		<div class="container">
+				<form th:action="@{/admin/manageMovies}" method="post" th:object="${movie}" enctype="multipart/form-data">
+					<div th:if="${#fields.hasGlobalErrors()}">
+						<p th:each="err:${#fields.globalErrors()}" th:text="${err}">Errore</p>
+					
+					</div>
+				<div>
+					<label for="titolo">Titolo:</label> <span><input type="text" th:field="${movie.title}"/></span>
+					<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Eventuale errore</span>
+				</div>
+				<div>
+					<label for="anno">Anno:</label> <span><input type="text" th:field="${movie.year}"/></span>
+					<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Eventuale errore</span>
+				</div>
+				<div>
+					<label for="fotoFilm">immagine</label> <span><input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/></span>
+				</div>
+				<div>
+					<span><button class="submit" type="submit">Conferma inserimento</button></span>
+				</div>
+				</form>
+		</div>
+		<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>

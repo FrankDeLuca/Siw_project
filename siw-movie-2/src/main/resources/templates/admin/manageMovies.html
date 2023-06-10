@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Movies</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Film nel tuo database</h1>
+		<div th:if="${movies.isEmpty()}">Non ci sono film nel sistema</div>
+		<ol type="I">
+			<li th:each="movie:${movies}">
+				<a th:href="@{'/movies' + '/' + ${movie.id}}"><span th:text="${movie.title} + ' (' + ${movie.year} + ')'">Titolo e anno</span></a>
+				<span> &rarr; </span>
+				<a th:href="@{'/admin/formUpdateMovie' + '/' + ${movie.id}}">Aggiorna</a>
+				<span> / </span>
+				<a th:href="@{'/admin/deleteMovie' + '/' + ${movie.id}}">Rimuovi</a>
+			</li>
+		</ol><br>
+		<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>

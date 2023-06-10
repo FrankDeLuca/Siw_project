@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add director to a film</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+	</head>
+	<body>
+		<h1>Regista per il film <span th:text="'['+${movie.title}+']'">Titolo</span></h1>
+		<div th:if="${artists.isEmpty()}">NON ci sono artisti da poter scegliere</div>
+		<ul>
+			<li th:each="artist:${artists}">
+				<a th:href="@{'/admin/setDirectorToMovie'+'/'+${movie.id}+'/'+${artist.id}}"><span th:text="${artist.name} + ' ' + ${artist.surname}">Nome e cognome</span></a>
+			</li>
+		</ul><br>
+		<a href="/admin/formNewArtist">Aggiungi un artista</a><br>
+		<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>

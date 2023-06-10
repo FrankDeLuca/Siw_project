@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Update movie</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Aggiorna questo film</h1>
+		<h2 th:text="${movie.title} + ' (' + ${movie.year} + ')'">Titolo e anno</h2>
+		<h3>
+			<span ><a class="show-film" th:href="@{'/movies'+'/'+${movie.id}}">scheda film</a></span>
+		</h3>
+		<div>
+		<h4 th:if="${movie.director==null}"><a class="show-film" th:href="@{'/admin/addDirector' + '/' + ${movie.id}}">aggiungi regista</a></h4>
+		<span th:unless="${movie.director==null}"> <span class="director">Regista:</span><span> </span></span>
+		<span th:text="${movie.director.name}+' '+${movie.director.surname}">Nome e cognome</span><span> &rArr; </span><a th:href="@{'/admin/addDirector' + '/' + ${movie.id}}"> modifica regista</a><span> / </span><a th:href="@{'/admin/deleteDirector' + '/' + ${movie.id}}"> cancella regista</a></span>
+		</div>
+		<h5 class="show-actors">Attori:
+				<div>
+					<ul>
+						<li th:each="artist:${actors}">
+							<span th:text="${artist.name} + ' ' + ${artist.surname}">Nome e cognome</span>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<form th:action="@{'/admin/addActor'+'/'+${movie.id}}">
+						<button class="submit" type="submit">aggiungi</button>
+					</form>
+				</div>
+		</h5><br>
+		<a href="/admin/manageMovies">Torna alla pagina precedente</a>
+	</body>
+</html>

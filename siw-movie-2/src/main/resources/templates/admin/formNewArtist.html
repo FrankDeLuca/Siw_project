@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NewArtist</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Aggiungi un artista al database</h1>
+		<div class="container">
+		<form th:action="@{/artists}" method="post" th:object="${artist}" enctype="multipart/form-data">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err:${#fields.globalErrors()}">Errore</p>
+		</div>
+		<div>
+			<label for="artistaNome">Nome artista</label> <span><input type="text" th:field="${artist.name}" /></span>
+			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Eventuale errore</span>
+		</div>
+		<div>
+			<label for="artistaCognome">Cognome artista</label> <span><input type="text" th:field="${artist.surname}" /></span>
+			<span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Eventuale errore</span>
+		</div>
+		<div>
+			<label for="artistaNascita">Nascita artista</label> <span><input type="date" th:field="${artist.birth}" /></span>
+			<span th:if="${#fields.hasErrors('birth')}" th:errors="*{birth}">Eventuale errore</span>
+		</div>
+		<div>
+			<label for="artistaMorte">Morte artista</label> <span><input type="date" th:field="${artist.death}" /></span>
+			<span th:if="${#fields.hasErrors('death')}" th:errors="*{death}">Eventuale errore</span>
+		</div>
+		<div>
+			<label for="artistaFoto">Foto artista</label> <span><input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/></span>
+		</div>
+		<div>
+			<span><button class="submit" type="submit">Conferma inserimento</button></span>
+		</div>
+		</form>
+		</div>
+		<a href="/">Torna alla pagina iniziale</a>
+	</body>
+</html>
