@@ -10,7 +10,8 @@
 		<h1>Aggiorna questo film</h1>
 		<h2 th:text="${movie.title} + ' (' + ${movie.year} + ')'">Titolo e anno</h2>
 		<h3>
-			<span ><a class="show-film" th:href="@{'/movies'+'/'+${movie.id}}">scheda film</a></span>
+			<span ><a class="show-film" th:href="@{'/movies'+'/'+${movie.id}}">scheda film</a></span><span> &sol; </span>
+			<span><a class="show-film" th:href="@{'/admin/modifyMovie' + '/' + ${movie.id}}">modifica i dati del film</a></span>
 		</h3>
 		<div>
 		<h4 th:if="${movie.director==null}"><a class="show-film" th:href="@{'/admin/addDirector' + '/' + ${movie.id}}">aggiungi regista</a></h4>

@@ -1,8 +1,10 @@
 package it.uniroma3.siw.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -41,6 +43,29 @@ public class ArtistController {
 	public String formNewArtist(Model model) {
 		model.addAttribute("artist", new Artist());
 		return "admin/formNewArtist.html";
+	}
+	
+	@GetMapping("/admin/modifyArtist/{id}")
+	public String formNewArtist(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("artist", this.artistService.getArtist(id));
+		return "/admin/formModifyArtist.html";
+	}
+	
+	@PostMapping("/admin/formModifiedArtist/{id}")
+	public String modify(@PathVariable("id") Long id, Model model, @RequestParam("name") String name, @RequestParam("surname") String surname, @RequestParam("birth") LocalDate birth, @Param("death") LocalDate death) {
+		if(death != null) {
+			this.artistService.modifyArtist(id, name, surname, birth, death);
+		} else {
+			this.artistService.modifyArtistsWithBirth(id, name, surname, birth);
+		}
+		model.addAttribute("artists", this.artistService.getAllArtists());
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("user", (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+            return "admin/manageArtists.html";
+		} 
+		return "artists.html";
 	}
 	
 	@GetMapping("/admin/manageArtists/{id}")

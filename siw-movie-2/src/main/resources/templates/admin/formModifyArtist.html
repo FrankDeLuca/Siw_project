@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Update actor</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Modifica i dati del film</h1>
+		<form th:action="@{'/admin/formModifiedArtist' + '/' + ${artist.id}}" method="post">
+			<div>
+			<label for="nuovoNome">Cambia Nome:</label><input required type="text"  th:value="${name}" name="name" />
+			</div>
+			<div>
+			<label for="nuovoCognome">Cambia Cognome:</label><input required type="text"  th:value="${surname}" name="surname" />
+			</div>
+			<div>
+			<label for="nuovaNascita">Cambia Nascita:</label><input required type="date"  th:value="${birth}" name="birth" />
+			</div>
+			<div>
+			<label for="nuovoNome">Cambia Morte:</label><input type="date"  th:value="${death}" name="death" />
+			</div>
+			<button class="submit" type="submit">Conferma modifiche</button>
+		</form>
+		<br>
+		<a href="/">Torna alla pagina precedente</a>
+	</body>
+</html>

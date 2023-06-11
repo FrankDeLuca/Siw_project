@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Update movie</title>
+		<link rel="stylesheet" href="/stylesheet.css" /> 
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Modifica i dati del film</h1>
+		<form th:action="@{'/admin/formModifiedMovie' + '/' + ${movie.id}}" method="post">
+			<label for="nuovoTitolo">Cambia titolo:</label><input required type="text"  th:value="${newTitle}" name="newTitle" />
+			<label for="nuovoAnno">Cambia anno d'uscita:</label><input required type="text" th:value="${newYear}" name="newYear" />
+			<button class="submit" type="submit">Conferma modifiche</button>
+		</form>
+		<br>
+		<a href="/">Torna alla pagina precedente</a>
+	</body>
+</html>

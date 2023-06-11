@@ -1,5 +1,6 @@
 package it.uniroma3.siw.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,26 @@ public class ArtistService {
 	@Transactional
 	public void saveArtist(Artist artist) {
 		this.artistRepository.save(artist);
+	}
+	
+	@Transactional
+	public void modifyArtist(Long id, String name, String surname, LocalDate birth, LocalDate death) {
+		Artist artist = this.getArtist(id);
+		artist.setName(name);
+		artist.setSurname(surname);
+		artist.setBirth(birth);
+		artist.setDeath(death);
+		this.saveArtist(artist);
+	}
+	
+	@Transactional
+	public void modifyArtistsWithBirth(Long id, String name, String surname, LocalDate birth) {
+		Artist artist = this.getArtist(id);
+		artist.setName(name);
+		artist.setSurname(surname);
+		artist.setBirth(birth);
+		artist.setDeath(null);
+		this.saveArtist(artist);
 	}
 	
 	@Transactional

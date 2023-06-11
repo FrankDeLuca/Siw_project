@@ -86,6 +86,20 @@ public class MovieController {
 		return "/admin/formUpdateMovie.html";
 	}
 	
+	@GetMapping("/admin/modifyMovie/{id}")
+		public String modifyMovie(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("movie", this.movieService.getMovie(id));
+			return "/admin/formModifyMovie.html";
+		}
+	
+	@PostMapping("/admin/formModifiedMovie/{id}")
+	public String modify(@PathVariable("id") Long id, Model model, @RequestParam("newYear") String newYear, @RequestParam("newTitle") String newTitle) {
+		Movie m = this.movieService.modifyTitleAndYear(id, newTitle, newYear);
+		model.addAttribute("movie", m);
+		model.addAttribute("actors", this.movieService.getMovieActors(id));
+		return "/admin/formUpdateMovie.html";
+	}
+	
 	@GetMapping("/admin/addDirector/{id}")
 	public String addDirector(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("movie", this.movieService.getMovie(id));

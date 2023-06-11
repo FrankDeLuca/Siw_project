@@ -13,7 +13,7 @@
 			<li th:each="artist:${artists}">
 				<a th:href="@{'/artists' + '/' + ${artist.id}}" th:text="${artist.name} + ' ' + ${artist.surname}">Artist info</a>
 				<span> &rarr; </span>
-				<a th:href="@{'/admin/manageArtists' + '/' + ${artist.id}}">Rimuovi</a>
+				<a th:href="@{'/admin/manageArtists' + '/' + ${artist.id}}">Rimuovi</a><span> &sol; </span><a th:href="@{'/admin/modifyArtist' + '/' + ${artist.id}}">Modifica dati artista</a>
 			</li>
 		</ul>
 			<a href="/">Torna alla pagina iniziale</a>

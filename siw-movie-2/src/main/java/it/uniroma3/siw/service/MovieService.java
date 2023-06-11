@@ -38,6 +38,17 @@ public class MovieService {
 		return this.movieRepository.save(movie);
 	}
 	
+	
+	@Transactional
+	public Movie modifyTitleAndYear(Long id, String title, String year) {
+		Movie m = this.getMovie(id);
+		if(title != null)
+			m.setTitle(title);
+		if(year != null)
+			m.setYear(Integer.parseInt(year));
+		return this.saveMovie(m);
+	}
+	
 	@Transactional
 	public Movie getMovieByTitle(String title) {
 		return this.movieRepository.findByTitle(title);
